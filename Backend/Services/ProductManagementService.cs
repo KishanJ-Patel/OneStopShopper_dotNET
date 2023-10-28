@@ -69,7 +69,7 @@ namespace Backend.Services
         {
             try
             {
-                Product[] products = _developDbContext.Products.ToArray();
+                Product[] products = _developDbContext.Products.AsNoTracking().ToArray();
                 return products;
             }
             catch (Exception)
