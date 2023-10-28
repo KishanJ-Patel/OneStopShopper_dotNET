@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Backend.Migrations
 {
-    [DbContext(typeof(DevelopDbContext))]
-    partial class DevelopDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(OssDbContext))]
+    partial class OssDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

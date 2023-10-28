@@ -3,9 +3,9 @@ using Backend.Models;
 
 namespace Backend.Data
 {
-    public class DevelopDbContext : DbContext
+    public class OssDbContext : DbContext
     {   
-        public DevelopDbContext(DbContextOptions<DevelopDbContext> options) : base(options)
+        public OssDbContext(DbContextOptions<OssDbContext> options) : base(options)
         {
             
         }
