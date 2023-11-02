@@ -3,7 +3,7 @@ using Backend.Data;
 
 namespace UnitTests.TestDbFixtures
 {
-    public class ServicesTestDbFixture
+    public class ControllersTestDbFixture
     {
         private const string ConnectionString
             = "Data Source=GALACTON\\ONESTOPSHOPPER;Database=DevelopDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";

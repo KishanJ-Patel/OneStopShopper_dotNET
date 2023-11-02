@@ -2,7 +2,7 @@
 using Backend.Models;
 using Backend.Services;
 using UnitTests.IEqualityComparers;
-using UnitTests.TestDbFixture;
+using UnitTests.TestDbFixtures;
 
 namespace UnitTests.ServicesUnitTests
 {
