@@ -1,10 +1,12 @@
 using Backend.Data;
+using Backend.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddTransient<ProductManagementService>();
 builder.Services.AddDbContext<OssDbContext>(
     options => options.UseSqlServer("Data Source=GALACTON\\ONESTOPSHOPPER;Database=DevelopDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"));
 
