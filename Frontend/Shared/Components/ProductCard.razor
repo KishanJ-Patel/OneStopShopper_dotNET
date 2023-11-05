@@ -1,0 +1,31 @@
+﻿@using Backend.Models
+
+@code {
+	[Parameter, EditorRequired]
+	public Product? Product { get; set; }
+
+	private string priceAsString = String.Empty;
+	private string priceIntegralDigits = String.Empty;
+	private string priceDecimalDigits = String.Empty;
+}
+
+@if (Product != null)
+{
+	priceAsString = Product.Price.ToString();
+	priceIntegralDigits = priceAsString.Substring(0, priceAsString.Length - 3);
+	priceDecimalDigits = priceAsString.Substring(priceAsString.Length - 3);
+
+	<div class="prodcard-body">
+		<div class="prodcard-img">
+			<img src="@Product.ImageUri" onerror="this.src='images/ErrorLoadingImage.png'">
+		</div>
+		<div class="prodcard-name">
+			@Product.Name
+		</div>
+		<div class="prodcard-price">
+			<div>$</div>
+			<div>@priceIntegralDigits</div>
+			<div>.@priceDecimalDigits</div>
+		</div>
+	</div>
+}
