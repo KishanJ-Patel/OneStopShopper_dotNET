@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Backend", "Backend\Backend.csproj", "{13AAB99A-9B39-41B4-B253-D795546A0C0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend", "Backend\Backend.csproj", "{13AAB99A-9B39-41B4-B253-D795546A0C0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend", "Frontend\Frontend.csproj", "{06125BCF-C200-4B18-8618-82C534F2D836}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frontend", "Frontend\Frontend.csproj", "{06125BCF-C200-4B18-8618-82C534F2D836}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{7B4237FB-2CEF-4BCA-8D0F-1CB90DC31EA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{7B4237FB-2CEF-4BCA-8D0F-1CB90DC31EA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminConsole", "AdminConsole\AdminConsole.csproj", "{4C0454EB-5749-45BD-BC10-2A8131E70C0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminConsole", "AdminConsole\AdminConsole.csproj", "{4C0454EB-5749-45BD-BC10-2A8131E70C0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

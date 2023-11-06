@@ -1,0 +1,68 @@
+﻿/* - Components */
+
+/* -- ProductCard component*/
+
+.prodcard-body { /* Use on the main div */
+    width: 224px;
+    height: 293px;
+    border-radius: 5px;
+    border: 1px solid #9A9696;
+    background: #FFF;
+}
+
+.prodcard-img { /* Use on parent div of img */
+    width: 200px;
+    height: 200px;
+    margin-top: 12px;
+    margin-inline: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .prodcard-img > img {
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+.prodcard-name { /* Use on div displaying product name */
+    width: 200px;
+    color: #000;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-inline: 12px;
+    margin-top: 12px;
+}
+
+.prodcard-price { /* Use on parent div displaying product price. Price is split into three divs. */
+    width: 50px;
+    height: 15px;
+    margin-inline-start: 12px;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    color: #000;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+    .prodcard-price > div:nth-child(2) {
+        color: #000;
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
