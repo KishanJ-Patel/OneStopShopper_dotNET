@@ -5,6 +5,7 @@
 | No. | Components |
 | --- | ----- |
 | 1.  | [ProductCard](#product-card) |
+| 2.  | [ProductsList](#products-list) |
 
 ---
 
@@ -39,5 +40,27 @@ This documentation provides an overview of its UI elements, parameters and behav
 - **Description**: The price of the product.
 - **Notes**: Display the integral digits in bold. Currency sign and decimal digits will have smaller font size.
 
+---
+
+## 2. Products List
+
+The Products List displays a vertical scrolling list of products using Product Card components 
+and is responsive to different screen sizes.
+This documentation provides an overview of its UI elements, parameters and behaviour.
+
+## Parameters
+
+## Behaviour
+
+## UI Elements
+
+### Products count
+
+- **Description**: A count of products in the list.
+
+### List
+
+- **Description**: A list of products as product cards.
+- **Notes**: The list should be vertical scrolling.
 
 ---
