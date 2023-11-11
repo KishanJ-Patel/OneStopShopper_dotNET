@@ -10,6 +10,8 @@ namespace Backend.Models
         {
             _name = String.Empty;
             _imageUri = String.Empty;
+            _sellerName = String.Empty;
+            _details = String.Empty;
         }
 
         // Model properties
@@ -107,5 +109,52 @@ namespace Backend.Models
             }
         }
         private string _imageUri;
-    }
+
+		// SellerName of the product
+		[Required, MaxLength(255)]
+		public required string SellerName
+		{
+			get => _sellerName;
+			set
+			{
+				// Validate the string value before assigning it to _sellerName
+
+				// Remove any leading or trailing white-space chars
+				value = value.Trim();
+
+				// Throw an error if the string value is null or empty
+				ArgumentException.ThrowIfNullOrEmpty(value);
+
+				// Throw an error if the length of the string value is more than 255
+				if (value.Length > 255)
+					throw new ArgumentException("SellerName cannot have more than 255 characters.");
+
+				// Assign the string value to _sellerName after validating
+				_sellerName = value;
+			}
+		}
+		private string _sellerName;
+
+		// Details of the product
+		[Required, MaxLength(4000)]
+		public required string Details
+		{
+			get => _details;
+			set
+			{
+				// Validate the string value before assigning it to _details
+
+				// Throw an error if the string value is null or empty
+				ArgumentException.ThrowIfNullOrEmpty(value);
+
+				// Throw an error if the length of the string value is more than 4000
+				if (value.Length > 4000)
+					throw new ArgumentException("Details cannot have more than 4000 characters.");
+
+				// Assign the string value to _details after validating
+				_details = value;
+			}
+		}
+		private string _details;
+	}
 }
