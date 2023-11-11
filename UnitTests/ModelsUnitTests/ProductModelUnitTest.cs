@@ -361,5 +361,107 @@ namespace UnitTests.ModelsUnitTests
                 };
             });
         }
-    }
+
+		// Test SellerName property validation rule: no leading or trailing white-space chars
+		[Fact]
+		public void ValidateSellerNameProperty_ShouldTrimWhiteSpaceChars()
+		{
+			// Arrange
+			string name = "NameOfProduct";
+			decimal price = 100.34m;
+			string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = "   NameOfProductSeller   ";
+			string validatedSellerName = "NameOfProductSeller";
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
+
+			// Act
+			Product product = new()
+			{
+				Name = name,
+				Price = price,
+				ImageUri = imageUri,
+				SellerName = sellerName,
+				Details = details
+			};
+
+			// Assert
+			Assert.Equal(validatedSellerName, product.SellerName);
+		}
+
+		// Test SellerName property validation rule: no null value
+		[Fact]
+		public void ValidateSellerNameProperty_ShouldThrowNullError()
+		{
+			// Arrange
+			string name = "NameOfProduct";
+			decimal price = 100.34m;
+			string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string? sellerName = null;
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
+
+			// Act and Assert
+			Assert.Throws<NullReferenceException>(() =>
+			{
+				Product product = new()
+				{
+					Name = name,
+					Price = price,
+					ImageUri = imageUri,
+					SellerName = sellerName,
+					Details = details
+				};
+			});
+		}
+
+		// Test SellerName property validation rule: no empty string
+		[Fact]
+		public void ValidateSellerNameProperty_ShouldThrowEmptyError()
+		{
+			// Arrange
+			string name = "NameOfProduct";
+			decimal price = 100.34m;
+			string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = String.Empty;
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
+
+			// Act and Assert
+			Assert.Throws<ArgumentException>(() =>
+			{
+				Product product = new()
+				{
+					Name = name,
+					Price = price,
+					ImageUri = imageUri,
+					SellerName = sellerName,
+					Details = details
+				};
+			});
+		}
+
+		// Test SellerName property validation rule: string max length 255
+		[Fact]
+		public void ValidateSellerNameProperty_ShouldEnforeMaxLength255()
+		{
+			// Arrange
+			string name = "NameOfProduct";
+			decimal price = 100.34m;
+			string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = String.Empty;
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
+            while (sellerName.Length <= 256) sellerName += "a";
+
+			// Act and Assert
+			Assert.Throws<ArgumentException>(() =>
+			{
+				Product product = new()
+				{
+					Name = name,
+					Price = price,
+					ImageUri = imageUri,
+					SellerName = sellerName,
+					Details = details
+				};
+			});
+		}
+	}
 }
