@@ -463,5 +463,81 @@ namespace UnitTests.ModelsUnitTests
 				};
 			});
 		}
+
+		// Test Details property validation rule: no null value
+		[Fact]
+		public void ValidateDetailsProperty_ShouldThrowNullError()
+		{
+			// Arrange
+			string name = "NameOfProduct";
+			decimal price = 100.34m;
+			string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = "NameOfProductSeller";
+			string? details = null;
+
+			// Act and Assert
+			Assert.Throws<ArgumentNullException>(() =>
+			{
+				Product product = new()
+				{
+					Name = name,
+					Price = price,
+					ImageUri = imageUri,
+					SellerName = sellerName,
+					Details = details
+				};
+			});
+		}
+
+		// Test Details property validation rule: no empty string
+		[Fact]
+		public void ValidateDetailsProperty_ShouldThrowEmptyError()
+		{
+			// Arrange
+			string name = "NameOfProduct";
+			decimal price = 100.34m;
+			string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = "NameOfProductSeller";
+			string details = String.Empty;
+
+			// Act and Assert
+			Assert.Throws<ArgumentException>(() =>
+			{
+				Product product = new()
+				{
+					Name = name,
+					Price = price,
+					ImageUri = imageUri,
+					SellerName = sellerName,
+					Details = details
+				};
+			});
+		}
+
+		// Test Details property validation rule: string max length 255
+		[Fact]
+		public void ValidateDetailsProperty_ShouldEnforeMaxLength4000()
+		{
+			// Arrange
+			string name = "NameOfProduct";
+			decimal price = 100.34m;
+			string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = "NameOfProductSeller";
+			string details = String.Empty;
+			while (details.Length <= 4001) details += "a";
+
+			// Act and Assert
+			Assert.Throws<ArgumentException>(() =>
+			{
+				Product product = new()
+				{
+					Name = name,
+					Price = price,
+					ImageUri = imageUri,
+					SellerName = sellerName,
+					Details = details
+				};
+			});
+		}
 	}
 }
