@@ -1,5 +1,4 @@
 ﻿using Backend.Models;
-using static System.Net.WebRequestMethods;
 
 namespace UnitTests.ModelsUnitTests
 {
@@ -13,19 +12,25 @@ namespace UnitTests.ModelsUnitTests
             string name = "NameOfProduct";
             decimal price = 100.34m;
             string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+            string sellerName = "NameOfProductSeller";
+            string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
 
-            // Act
-            Product product = new()
+			// Act
+			Product product = new()
             {
                 Name = name,
                 Price = price,
-                ImageUri = imageUri
+                ImageUri = imageUri,
+                SellerName = sellerName,
+                Details = details
             };
 
             // Assert
             Assert.Equal(name, product.Name);
             Assert.Equal(price, product.Price);
             Assert.Equal(imageUri, product.ImageUri);
+            Assert.Equal(sellerName, product.SellerName);
+            Assert.Equal(details, product.Details);
         }
 
         // Test Name property validation rule: no leading or trailing white-space chars
@@ -37,14 +42,18 @@ namespace UnitTests.ModelsUnitTests
             string validatedName = "NameOfProduct";
             decimal price = 100.34m;
             string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = "NameOfProductSeller";
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
 
-            // Act
-            Product product = new()
+			// Act
+			Product product = new()
             {
                 Name = name,
                 Price = price,
-                ImageUri = imageUri
-            };
+                ImageUri = imageUri,
+				SellerName = sellerName,
+				Details = details
+			};
 
             // Assert
             Assert.Equal(validatedName, product.Name);
@@ -58,16 +67,20 @@ namespace UnitTests.ModelsUnitTests
             string? name = null;
             decimal price = 100.34m;
             string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = "NameOfProductSeller";
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
 
-            // Act and Assert
-            Assert.Throws<NullReferenceException>(() =>
+			// Act and Assert
+			Assert.Throws<NullReferenceException>(() =>
             {
                 Product product = new()
                 {
                     Name = name,
                     Price = price,
-                    ImageUri = imageUri
-                };
+                    ImageUri = imageUri,
+					SellerName = sellerName,
+					Details = details
+				};
             });
         }
 
@@ -79,16 +92,20 @@ namespace UnitTests.ModelsUnitTests
             string name = String.Empty;
             decimal price = 100.34m;
             string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = "NameOfProductSeller";
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
 
-            // Act and Assert
-            Assert.Throws<ArgumentException>(() =>
+			// Act and Assert
+			Assert.Throws<ArgumentException>(() =>
             {
                 Product product = new()
                 {
                     Name = name,
                     Price = price,
-                    ImageUri = imageUri
-                };
+                    ImageUri = imageUri,
+					SellerName = sellerName,
+					Details = details
+				};
             });
         }
 
@@ -100,7 +117,9 @@ namespace UnitTests.ModelsUnitTests
             string name = String.Empty;
             decimal price = 100.34m;
             string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
-            while (name.Length <= 256) name += "a";
+			string sellerName = "NameOfProductSeller";
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
+			while (name.Length <= 256) name += "a";
 
             // Act and Assert
             Assert.Throws<ArgumentException>(() =>
@@ -109,8 +128,10 @@ namespace UnitTests.ModelsUnitTests
                 {
                     Name = name,
                     Price = price,
-                    ImageUri = imageUri
-                };
+                    ImageUri = imageUri,
+					SellerName = sellerName,
+					Details = details
+				};
             });
         }
         
@@ -122,16 +143,20 @@ namespace UnitTests.ModelsUnitTests
             string name = "NameOfProperty";
             decimal? price = null;
             string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = "NameOfProductSeller";
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
 
-            // Act and Assert
-            Assert.ThrowsAny<InvalidOperationException>(() =>
+			// Act and Assert
+			Assert.ThrowsAny<InvalidOperationException>(() =>
             {
                 Product product = new()
                 {
                     Name = name,
                     Price = (decimal)price,
-                    ImageUri = imageUri
-                };
+                    ImageUri = imageUri,
+					SellerName = sellerName,
+					Details = details
+				};
             });
         }
 
@@ -143,15 +168,19 @@ namespace UnitTests.ModelsUnitTests
             string name = "NameOfProperty";
             decimal price = -1.00m;
             string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = "NameOfProductSeller";
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
 
-            // Act and Arrange
-            Assert.ThrowsAny<ArgumentException>(() =>
+			// Act and Arrange
+			Assert.ThrowsAny<ArgumentException>(() =>
             {
                 Product product = new()
                 {
                     Name = name,
                     Price = price,
-                    ImageUri = imageUri
+                    ImageUri = imageUri,
+                    SellerName = sellerName,
+                    Details = details
                 };
             });
         }
@@ -164,15 +193,19 @@ namespace UnitTests.ModelsUnitTests
             string name = "NameOfProperty";
             decimal price = 0.00m;
             string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = "NameOfProductSeller";
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
 
-            // Act and Arrange
-            Assert.ThrowsAny<ArgumentException>(() =>
+			// Act and Arrange
+			Assert.ThrowsAny<ArgumentException>(() =>
             {
                 Product product = new()
                 {
                     Name = name,
                     Price = price,
-                    ImageUri = imageUri
+                    ImageUri = imageUri,
+                    SellerName = sellerName,
+                    Details = details
                 };
             });
         }
@@ -185,15 +218,19 @@ namespace UnitTests.ModelsUnitTests
             string name = "NameOfProperty";
             decimal price = 1000000.01m;
             string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = "NameOfProductSeller";
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
 
-            // Act and Arrange
-            Assert.ThrowsAny<ArgumentException>(() =>
+			// Act and Arrange
+			Assert.ThrowsAny<ArgumentException>(() =>
             {
                 Product product = new()
                 {
                     Name = name,
                     Price = price,
-                    ImageUri = imageUri
+                    ImageUri = imageUri,
+                    SellerName = sellerName,
+                    Details = details
                 };
             });
         }
@@ -206,15 +243,19 @@ namespace UnitTests.ModelsUnitTests
             string name = "NameOfProperty";
             decimal price = 1.001m;
             string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = "NameOfProductSeller";
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
 
-            // Act and Arrange
-            Assert.ThrowsAny<ArgumentException>(() =>
+			// Act and Arrange
+			Assert.ThrowsAny<ArgumentException>(() =>
             {
                 Product product = new()
                 {
                     Name = name,
                     Price = price,
-                    ImageUri = imageUri
+                    ImageUri = imageUri,
+                    SellerName = sellerName,
+                    Details = details
                 };
             });
         }
@@ -228,13 +269,17 @@ namespace UnitTests.ModelsUnitTests
             decimal price = 100.34m;
             string imageUri = "    https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg    ";
             string validatedImageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = "NameOfProductSeller";
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
 
-            // Act
-            Product product = new()
+			// Act
+			Product product = new()
             {
                 Name = name,
                 Price = price,
-                ImageUri = imageUri
+                ImageUri = imageUri,
+                SellerName = sellerName,
+                Details = details
             };
 
             // Assert
@@ -249,15 +294,19 @@ namespace UnitTests.ModelsUnitTests
             string name = "NameOfProduct";
             decimal price = 100.34m;
             string? imageUri = null;
+			string sellerName = "NameOfProductSeller";
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
 
-            // Act and Assert
-            Assert.Throws<NullReferenceException>(() =>
+			// Act and Assert
+			Assert.Throws<NullReferenceException>(() =>
             {
                 Product product = new()
                 {
                     Name = name,
                     Price = price,
-                    ImageUri = imageUri
+                    ImageUri = imageUri,
+                    SellerName = sellerName,
+                    Details = details
                 };
             });
         }
@@ -270,15 +319,19 @@ namespace UnitTests.ModelsUnitTests
             string name = "NameOfProduct";
             decimal price = 100.34m;
             string imageUri = "/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = "NameOfProductSeller";
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
 
-            // Act and Assert
-            Assert.Throws<ArgumentException>(() =>
+			// Act and Assert
+			Assert.Throws<ArgumentException>(() =>
             {
                 Product product = new()
                 {
                     Name = name,
                     Price = price,
-                    ImageUri = imageUri
+                    ImageUri = imageUri,
+                    SellerName = sellerName,
+                    Details = details
                 };
             });
         }
@@ -292,17 +345,199 @@ namespace UnitTests.ModelsUnitTests
             string name = "NameOfProduct";
             decimal price = 100.34m;
             string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.pdf";
+			string sellerName = "NameOfProductSeller";
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
 
-            // Act and Assert
-            Assert.Throws<ArgumentException>(() =>
+			// Act and Assert
+			Assert.Throws<ArgumentException>(() =>
             {
                 Product product = new()
                 {
                     Name = name,
                     Price = price,
-                    ImageUri = imageUri
+                    ImageUri = imageUri,
+                    SellerName = sellerName,
+                    Details = details
                 };
             });
         }
-    }
+
+		// Test SellerName property validation rule: no leading or trailing white-space chars
+		[Fact]
+		public void ValidateSellerNameProperty_ShouldTrimWhiteSpaceChars()
+		{
+			// Arrange
+			string name = "NameOfProduct";
+			decimal price = 100.34m;
+			string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = "   NameOfProductSeller   ";
+			string validatedSellerName = "NameOfProductSeller";
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
+
+			// Act
+			Product product = new()
+			{
+				Name = name,
+				Price = price,
+				ImageUri = imageUri,
+				SellerName = sellerName,
+				Details = details
+			};
+
+			// Assert
+			Assert.Equal(validatedSellerName, product.SellerName);
+		}
+
+		// Test SellerName property validation rule: no null value
+		[Fact]
+		public void ValidateSellerNameProperty_ShouldThrowNullError()
+		{
+			// Arrange
+			string name = "NameOfProduct";
+			decimal price = 100.34m;
+			string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string? sellerName = null;
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
+
+			// Act and Assert
+			Assert.Throws<NullReferenceException>(() =>
+			{
+				Product product = new()
+				{
+					Name = name,
+					Price = price,
+					ImageUri = imageUri,
+					SellerName = sellerName,
+					Details = details
+				};
+			});
+		}
+
+		// Test SellerName property validation rule: no empty string
+		[Fact]
+		public void ValidateSellerNameProperty_ShouldThrowEmptyError()
+		{
+			// Arrange
+			string name = "NameOfProduct";
+			decimal price = 100.34m;
+			string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = String.Empty;
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
+
+			// Act and Assert
+			Assert.Throws<ArgumentException>(() =>
+			{
+				Product product = new()
+				{
+					Name = name,
+					Price = price,
+					ImageUri = imageUri,
+					SellerName = sellerName,
+					Details = details
+				};
+			});
+		}
+
+		// Test SellerName property validation rule: string max length 255
+		[Fact]
+		public void ValidateSellerNameProperty_ShouldEnforeMaxLength255()
+		{
+			// Arrange
+			string name = "NameOfProduct";
+			decimal price = 100.34m;
+			string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = String.Empty;
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
+            while (sellerName.Length <= 256) sellerName += "a";
+
+			// Act and Assert
+			Assert.Throws<ArgumentException>(() =>
+			{
+				Product product = new()
+				{
+					Name = name,
+					Price = price,
+					ImageUri = imageUri,
+					SellerName = sellerName,
+					Details = details
+				};
+			});
+		}
+
+		// Test Details property validation rule: no null value
+		[Fact]
+		public void ValidateDetailsProperty_ShouldThrowNullError()
+		{
+			// Arrange
+			string name = "NameOfProduct";
+			decimal price = 100.34m;
+			string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = "NameOfProductSeller";
+			string? details = null;
+
+			// Act and Assert
+			Assert.Throws<ArgumentNullException>(() =>
+			{
+				Product product = new()
+				{
+					Name = name,
+					Price = price,
+					ImageUri = imageUri,
+					SellerName = sellerName,
+					Details = details
+				};
+			});
+		}
+
+		// Test Details property validation rule: no empty string
+		[Fact]
+		public void ValidateDetailsProperty_ShouldThrowEmptyError()
+		{
+			// Arrange
+			string name = "NameOfProduct";
+			decimal price = 100.34m;
+			string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = "NameOfProductSeller";
+			string details = String.Empty;
+
+			// Act and Assert
+			Assert.Throws<ArgumentException>(() =>
+			{
+				Product product = new()
+				{
+					Name = name,
+					Price = price,
+					ImageUri = imageUri,
+					SellerName = sellerName,
+					Details = details
+				};
+			});
+		}
+
+		// Test Details property validation rule: string max length 255
+		[Fact]
+		public void ValidateDetailsProperty_ShouldEnforeMaxLength4000()
+		{
+			// Arrange
+			string name = "NameOfProduct";
+			decimal price = 100.34m;
+			string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
+			string sellerName = "NameOfProductSeller";
+			string details = String.Empty;
+			while (details.Length <= 4001) details += "a";
+
+			// Act and Assert
+			Assert.Throws<ArgumentException>(() =>
+			{
+				Product product = new()
+				{
+					Name = name,
+					Price = price,
+					ImageUri = imageUri,
+					SellerName = sellerName,
+					Details = details
+				};
+			});
+		}
+	}
 }
