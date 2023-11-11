@@ -64,6 +64,29 @@ properties, methods, validation rules and example usages.
     1. ImageUri cannot be an invalid Uri.
     1. ImageUri cannot reference a file with an extension other than `.jpg`,`.jpeg` or `.png`. 
 
+### `SellerName` *(string)*
+
+- **Description**: The name of the product's seller.
+- **Usage**: Provides the product's seller name for display and identification.
+- **Example**: `string productSellerName = product.SellerName;`
+- **Accessor**: `get` and `set`
+- **Validation Rules**:
+    1. SellerName cannot be null value.
+    1. SellerName cannot have leading or trailing white-space characters.
+    1. The length of SellerName cannot be 0.
+    1. The length of SellerName cannot be more than 255.
+
+### `Details` *(string)*
+
+- **Description**: The details of the product.
+- **Usage**: Provides the product's details for display.
+- **Example**: `string productDetails = product.Details;`
+- **Accessor**: `get` and `set`
+- **Validation Rules**:
+    1. Details cannot be null value.
+    1. The length of SellerName cannot be 0.
+    1. The length of Details cannot have more than 4000.
+
 --- 
 
 ## Example Usage
@@ -74,7 +97,9 @@ Product product = new Product
 {
     Name = "Example Product",
     Price = 29.99,
-    ImageUri = "https://example.com/images/example-product.jpg"
+    ImageUri = "https://example.com/images/example-product.jpg",
+    SellerName = "Example Seller",
+    Details = "Example Product Specification\n- Line 1\n- Line 2\n- Line 3\n"
 };
 ```
 
@@ -84,5 +109,7 @@ Guid productId = product.Id;
 string productName = product.Name;
 decimal productPrice = product.Price;
 string productImageUri = product.ImageUri;
+string productSellerName = product.SellerName;
+string productDetails = product.Details;
 ```
 ---
