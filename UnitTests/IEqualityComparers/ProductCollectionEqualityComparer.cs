@@ -27,6 +27,8 @@
                 if (productX.Name != productY.Name) return false;
                 if (productX.Price != productY.Price) return false;
                 if (productX.ImageUri != productY.ImageUri) return false;
+                if (productX.SellerName != productY.SellerName) return false;
+                if (productX.Details != productY.Details) return false;
             }
         }
 
