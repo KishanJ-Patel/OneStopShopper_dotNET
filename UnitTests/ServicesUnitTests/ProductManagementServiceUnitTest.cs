@@ -25,11 +25,15 @@ namespace UnitTests.ServicesUnitTests
             string uniqueName = "NameOfProduct " + Guid.NewGuid().ToString();
             decimal price = 100.34m;
             string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
-            Product product = new()
+			string sellerName = "NameOfProductSeller";
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
+			Product product = new()
             {
                 Name = uniqueName,
                 Price = price,
-                ImageUri = imageUri
+                ImageUri = imageUri,
+                SellerName = sellerName,
+                Details = details
             };
 
             // Act and Assert
@@ -50,11 +54,15 @@ namespace UnitTests.ServicesUnitTests
             string uniqueName = "NameOfProduct " + Guid.NewGuid().ToString();
             decimal price = 100.34m;
             string imageUri = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
-            Product product = new()
+			string sellerName = "NameOfProductSeller";
+			string details = "Product Specification\n- Line 1\n- Line 2\n- Line 3\n";
+			Product product = new()
             {
                 Name = uniqueName,
                 Price = price,
-                ImageUri = imageUri
+                ImageUri = imageUri,
+                SellerName = sellerName,
+                Details = details
             };
 
             // Act and Assert
@@ -83,23 +91,35 @@ namespace UnitTests.ServicesUnitTests
             string imageUri1 = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
             string imageUri2 = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
             string imageUri3 = "https://i.postimg.cc/85yJJXHm/pexels-math-90946.jpg";
-            Product product1 = new()
+			string sellerName1 = "NameOfProductSeller1";
+			string sellerName2 = "NameOfProductSeller2";
+			string sellerName3 = "NameOfProductSeller3";
+			string details1 = "Product1 Specification\n- Line 1\n- Line 2\n- Line 3\n";
+			string details2 = "Product2 Specification\n- Line 1\n- Line 2\n- Line 3\n";
+			string details3 = "Product3 Specification\n- Line 1\n- Line 2\n- Line 3\n";
+			Product product1 = new()
             {
                 Name = uniqueName1,
                 Price = price1,
-                ImageUri = imageUri1
+                ImageUri = imageUri1,
+                SellerName = sellerName1,
+                Details = details1
             };
             Product product2 = new()
             {
                 Name = uniqueName2,
                 Price = price2,
-                ImageUri = imageUri2
+                ImageUri = imageUri2,
+                SellerName = sellerName2,
+                Details = details2
             };
             Product product3= new()
             {
                 Name = uniqueName3,
                 Price = price3,
-                ImageUri = imageUri3
+                ImageUri = imageUri3,
+                SellerName = sellerName3,
+                Details = details3
             };
             Product[] products = { product1, product2, product3 };
 
