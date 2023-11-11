@@ -1,0 +1,23 @@
+﻿@using Backend.Models
+
+@code {
+	private Product[]? products = Array.Empty<Product>();
+	private HttpClient backendClient = new();
+
+	protected override async Task OnInitializedAsync()
+	{
+
+		products = await backendClient.GetFromJsonAsync<Product[]>("https://localhost:7130/api/Products");
+	}
+}
+
+@if (products != null)
+{
+	<div><b>@products.Length</b> @(products.Length == 1 ? "Product" : "Products") found.</div>
+	<div class="prodslist-body">
+		@foreach (Product product in products)
+		{
+			<ProductCard Product="@product" />
+		}
+	</div>
+}

@@ -1,13 +1,12 @@
-﻿/* - Components */
-
-/* -- ProductCard component*/
+﻿/* -- ProductCard component*/
 
 .prodcard-body { /* Use on the main div */
     width: 224px;
-    height: 293px;
+    height: 297px;
     border-radius: 5px;
     border: 1px solid #9A9696;
     background: #FFF;
+    margin: 10px;
 }
 
 .prodcard-img { /* Use on parent div of img */
@@ -28,8 +27,7 @@
 .prodcard-name { /* Use on div displaying product name */
     width: 200px;
     color: #000;
-    font-family: Inter;
-    font-size: 12px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -43,7 +41,6 @@
 }
 
 .prodcard-price { /* Use on parent div displaying product price. Price is split into three divs. */
-    width: 50px;
     height: 15px;
     margin-inline-start: 12px;
     margin-top: 12px;
@@ -51,8 +48,7 @@
     flex-direction: row;
     align-items: baseline;
     color: #000;
-    font-family: Inter;
-    font-size: 10px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -60,9 +56,16 @@
 
     .prodcard-price > div:nth-child(2) {
         color: #000;
-        font-family: Inter;
-        font-size: 14px;
+        font-size: 16px;
         font-style: normal;
-        font-weight: 500;
+        font-weight: bold;
         line-height: normal;
     }
+
+/* -- ProductsList component */
+
+.prodslist-body { /* Use on list div */
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+}
