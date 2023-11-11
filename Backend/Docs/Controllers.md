@@ -15,7 +15,7 @@ This documentation provides an overview of its attributs, properties, methods, R
 
 ## Controller Route
 
-`api/products`
+`api/Products`
 
 ## Required Services 
 
@@ -30,13 +30,30 @@ This documentation provides an overview of its attributs, properties, methods, R
 - **Access Modifier**: `public`
 - **Parameters**: *none*
 - **Returns**: `Product[]`
-- **Example**: `https://backend.com/api/products`
+- **Example**: `https://backend.com/api/Products`
+
+### `GetProductById()` API
+
+- **Usage**: Finds the product by id in the database and returns a copy.
+- **HTTP method**: `HttpGet`
+- **Access Modifier**: `public`
+- **Parameters**:
+	- `id` *(Guid)*: Unique Guid id of the product
+- **Returns**: `Product?`
+	- Return a copy of product if found.
+    - Return null if no product with matching id exists in the database.
+- **Example**: `https://backend.com/api/Products/79A3A3BE-54D8-4518-B970-2986EB0A8892`
 
 ## Example Usage
 
 Call GetProducts() API by making request to the following route which will return an array of Products:
 ```
-https://backend.com/api/products
+https://backend.com/api/Products
+```
+
+Call GetProductById() API by making request to the following route which will return a Product instance or null:
+```
+https://backend.com/api/Products/79A3A3BE-54D8-4518-B970-2986EB0A8892
 ```
 
 ---
