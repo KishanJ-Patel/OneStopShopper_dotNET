@@ -25,12 +25,6 @@ namespace Backend.Services
         /// <example>
         /// Usage Example:
         /// <code>
-        /// Product newProduct = new Product
-        /// {
-        ///     Name = "Example Product",
-        ///     Price = 29.99,
-        ///     ImageUri = "https://example.com/images/example-product.jpg"
-        /// };
         /// SaveProduct(newProduct);
         /// </code>
         /// </example>
@@ -64,7 +58,6 @@ namespace Backend.Services
         /// <returns>An array of products. An empty array if no product exists.</returns>
         /// <exception cref="Exception">
         /// </exception>
-        // Copies all products from the database into an array
         public Product[] GetProducts()
         {
             try
@@ -77,5 +70,44 @@ namespace Backend.Services
                 throw;
             }
         }
-    }
+
+		/// <summary>
+		/// Method <c>GetProductById</c> finds the product by id in the database and returns a copy.
+		/// For more information check <c>Services.md</c> doc.
+		/// <example>
+		/// Usage Example:
+		/// <code>
+		/// Product? product = GetProductById(id);
+		/// </code>
+		/// </example>
+		/// </summary>
+        /// <returns>A product instance. Null if no product exists with matching id.</returns>
+        /// <exception cref="InvalidOperationException">
+        /// </exception>
+        /// <exception cref="ArgumentNullException">
+        /// </exception>
+        /// <exception cref="Exception">
+        /// </exception>
+        public Product? GetProductById(Guid id)
+        {
+            try
+            {
+                Product? product = _developDbContext.Products.AsNoTracking().SingleOrDefault(p => p.Id == id);
+                if (product == null) return null;
+                return product;
+            }
+            catch (InvalidOperationException)
+            {
+                throw new InvalidOperationException("More than one product with matching id exists in the database.");
+            }
+            catch (ArgumentNullException)
+            {
+                throw new ArgumentNullException(nameof(id), "Id cannot be null.");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+	}
 }
