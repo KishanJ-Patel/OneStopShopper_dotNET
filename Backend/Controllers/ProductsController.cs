@@ -23,7 +23,7 @@ namespace Backend.Controllers
         }
 
         // GET: api/<ProductsController>/79A3A3BE-54D8-4518-B970-2986EB0A8892
-        [HttpGet]
+        [HttpGet("api/[controller]/{id}")]
         public Product? GetProductByID(Guid id)
         {
             return productManagementService.GetProductById(id);
