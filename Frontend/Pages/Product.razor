@@ -1,0 +1,58 @@
+﻿@page "/product/{Id:guid}"
+@layout EmptyLayout
+@using Models = Backend.Models
+
+@code {
+	[Parameter, EditorRequired]
+	public Guid? Id { get; set; }
+	private Models.Product? product { get; set; }
+	private string priceAsString = String.Empty;
+	private string priceIntegralDigits = String.Empty;
+	private string priceDecimalDigits = String.Empty;
+	private HttpClient backendClient = new();
+
+	protected override async Task OnInitializedAsync()
+	{
+		product = await backendClient.GetFromJsonAsync<Models.Product>($"https://localhost:7130/api/Products/{Id}");
+		if (product != null)
+		{
+			priceAsString = product.Price.ToString();
+			priceIntegralDigits = priceAsString.Substring(0, priceAsString.Length - 3);
+			priceDecimalDigits = priceAsString.Substring(priceAsString.Length - 2);
+		}
+	}
+}
+
+<PageTitle>Product Page</PageTitle>
+
+@if (product != null)
+{
+	<div>
+		<div class="prodpage-backbtn">
+			<a href="/">&larr; Back to Home page</a>
+		</div>
+		<div class="prodpage-img">
+			<img src="@product.ImageUri" onerror="this.src='images/ErrorLoadingImage.png'">
+		</div>
+		<div class="prodpage-info">
+			<div>@product.Name</div>
+			<div>
+				<div>$&nbsp;</div>
+				<div>@priceIntegralDigits</div>
+				<div>.@priceDecimalDigits</div>
+			</div>
+			<div>
+				<div>Sold by</div>
+				<div>
+					@product.SellerName
+				</div>
+			</div>
+		</div>
+		<div class="prodpage-details">
+			<div>Details</div>
+			<div>
+				@product.Details
+			</div>
+		</div>
+	</div>
+}
