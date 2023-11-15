@@ -1,23 +1,22 @@
 ﻿@using Backend.Models
 
 @code {
-	private Product[]? products = Array.Empty<Product>();
+	private Dictionary<Guid, Product>? prodDict = new();
 	private HttpClient backendClient = new();
 
 	protected override async Task OnInitializedAsync()
 	{
-
-		products = await backendClient.GetFromJsonAsync<Product[]>("https://localhost:7130/api/Products");
+		prodDict = await backendClient.GetFromJsonAsync<Dictionary<Guid, Product>>("https://localhost:7130/api/Products");
 	}
 }
 
-@if (products != null)
+@if (prodDict != null)
 {
-	<div><b>@products.Length</b> @(products.Length == 1 ? "Product" : "Products") found.</div>
+	<div><b>@prodDict.Count</b> @(prodDict.Count == 1 ? "Product" : "Products") found.</div>
 	<div class="prodslist-body">
-		@foreach (Product product in products)
+		@foreach (KeyValuePair<Guid, Product> entry in prodDict)
 		{
-			<ProductCard Product="@product" />
+			<ProductCard Product="@entry.Value" />
 		}
 	</div>
 }
