@@ -16,7 +16,7 @@
 	<div class="prodslist-body">
 		@foreach (KeyValuePair<Guid, Product> entry in prodDict)
 		{
-			<ProductCard Product="@entry.Value" />
+			<ProductCard Id="@entry.Key" Product="@entry.Value" />
 		}
 	</div>
 }

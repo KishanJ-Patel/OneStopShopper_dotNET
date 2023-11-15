@@ -23,6 +23,10 @@ This documentation provides an overview of its UI elements, parameters and behav
 
 ## Behaviour
 
+### Link to Product page
+
+- **Description**: Clicking on the product card opens the product page.
+
 ## UI Elements
 
 ### Image

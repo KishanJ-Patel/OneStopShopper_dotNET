@@ -1,4 +1,6 @@
-﻿/* -- ProductCard component*/
+﻿.prodcard-link { /* Use on anchor tags */
+    text-decoration: none;
+}
 
 .prodcard-body { /* Use on the main div */
     width: 224px;
@@ -61,11 +63,3 @@
         font-weight: bold;
         line-height: normal;
     }
-
-/* -- ProductsList component */
-
-.prodslist-body { /* Use on list div */
-    display: flex;
-    flex-flow: row wrap;
-    width: 100%;
-}
